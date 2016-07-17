@@ -17,21 +17,7 @@ public class AppTest {
 	public void testMoneysEquality(){
 		assertTrue(Money.dollar(5).equals(Money.dollar(5)));
 		assertFalse(Money.dollar(5).equals(Money.dollar(6)));
-		assertTrue(Money.franc(5).equals(Money.franc(5)));
-		assertFalse(Money.franc(5).equals(Money.franc(6)));
 		assertFalse(Money.franc(5).equals(Money.dollar(5)));
-	}
-	
-	@Test
-	public void differentClassEquality(){
-		assertTrue(new Money(10,"CHF").equals(new Franc(10, "CHF")));
-	}
-	
-	@Test
-	public void francMultiplication() {
-		Money five = Money.franc(5);
-		assertEquals(Money.franc(10), five.times(2));
-		assertEquals(Money.franc(15), five.times(3));
 	}
 	
 	@Test

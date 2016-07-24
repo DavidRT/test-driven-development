@@ -1,10 +1,4 @@
-class TestCase:
-	def __init__(self,name):
-		self.name = name
-
-	def run(self):
-		method = getattr(self,self.name)
-		method()	
+from TestCase import TestCase
 
 class WasRun(TestCase):
 	def __init__(self,name):
@@ -13,12 +7,3 @@ class WasRun(TestCase):
 
 	def testMethod(self):
 		self.wasRun = 1
-
-class TestCaseTest(TestCase):
-	def testRunning(self):
-		test = WasRun("testMethod")
-		assert(not test.wasRun)
-		test.run()
-		assert(test.wasRun)
-		
-TestCaseTest("testRunning").run()

@@ -5,8 +5,12 @@ class TestCase:
 	def run(self):
 		self.setUp()
 		method = getattr(self,self.name)
-		method()	
+		method()
+		self.tearDown()	
 
 	def setUp(self):
 		# Not implemented here, but its impelemnted in WasRun class.
 		pass 
+
+	def tearDown(self):
+		pass

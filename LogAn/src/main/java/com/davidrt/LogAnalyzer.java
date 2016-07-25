@@ -1,22 +1,26 @@
 package com.davidrt;
 
 public class LogAnalyzer {
-	
+
 	private boolean wasLastFileNameValid;
+	private ExtensionManager extensionManager;
 	
-	public boolean isValidLogFileName(String fileName){
+	public LogAnalyzer() {
+		extensionManager = new FileExtensionManager();
+	}
+	
+	public LogAnalyzer(ExtensionManager extensionManager){
+		this.extensionManager = extensionManager;
+	}
+
+	public boolean isValidLogFileName(String fileName) {
 		
-		if (fileName.trim().length() == 0){
-			throw new IllegalArgumentException("No filename provided!");
-		}
+		boolean result = extensionManager.isValid(fileName);
+		wasLastFileNameValid = result ? true : false;
 		
-		if (!fileName.toLowerCase().endsWith(".slf")){
-			wasLastFileNameValid = false;
-			return false;
-		}
-		
-		wasLastFileNameValid = true;
-		return true;
+		if (fileName.trim().split("\\.")[0].length() < 6) return false;
+		return result;
+
 	}
 
 	public boolean isWasLastFileNameValid() {

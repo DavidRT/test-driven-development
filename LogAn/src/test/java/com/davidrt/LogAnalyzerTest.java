@@ -45,5 +45,14 @@ public class LogAnalyzerTest {
 		analyzer.isValidLogFileName("example.slf");
 		assertTrue(analyzer.isWasLastFileNameValid());
 	}
+	
+	@Test
+	public void isValidFileName_nameShorterThan6CharsButSupportedExtension_returnsFalse(){
+		StubExtensionManager fakeExtension = new StubExtensionManager();
+		fakeExtension.setShouldExtensionBeValid(true);
+		
+		LogAnalyzer analyzer = new LogAnalyzer(fakeExtension);
+		assertFalse(analyzer.isValidLogFileName("short.ext"));
+	}
 
 }

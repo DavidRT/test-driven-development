@@ -1,6 +1,7 @@
 from TestCase import TestCase
 
 class WasRun(TestCase):
+	
 	def __init__(self,name):
 		self.wasRun = None
 		TestCase.__init__(self,name)
@@ -15,4 +16,5 @@ class WasRun(TestCase):
 		self.log = self.log + "tearDown "
 
 	def testBrokenMethod(self):
+		print("will raise")
 		raise Exception

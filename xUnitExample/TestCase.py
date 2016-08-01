@@ -5,14 +5,20 @@ class TestCase:
 	def __init__(self,name):
 		self.name = name
 
-	def run(self):
-		result = TestResult()
+	def run(self, result):
+		print("run..")
 		result.testStarted()
+		print("setUp")
 		self.setUp()
-		method = getattr(self,self.name)
-		method()
+		try:
+			method = getattr(self,self.name)
+			print("call method")
+			print(method)
+			method()
+		except:
+			print ("excception raises!")
+			result.testFailed()
 		self.tearDown()	
-		return result
 
 	def setUp(self):
 		# Not implemented here, but its impelemnted in WasRun class.
